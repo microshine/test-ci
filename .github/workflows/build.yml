@@ -1,0 +1,18 @@
+name: Build
+on: [push]
+
+jobs:
+  macos:
+    name: Build MacOS package
+    runs-on: macos-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.0.2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Checkout
+        run: git clone git@github.com:microshine/ejbca-client.git --depth 1
+      - name: Print folder
+        run: ls ./ejbca-client
