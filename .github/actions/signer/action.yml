@@ -1,6 +1,9 @@
 name: 'File signer'
 description: 'Sign a file'
-# inputs:
+inputs:
+  file-path:
+    description: File path
+    required: true
   # who-to-greet:  # id of input
   #   description: 'Who to greet'
   #   required: true

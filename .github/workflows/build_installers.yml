@@ -55,6 +55,8 @@ jobs:
         run: |
           npm install
           node build/index.js
+        with:
+          file-path: /path/to/some/file
       - name: Download math result for job 2
         uses: actions/download-artifact@v1
         with:
