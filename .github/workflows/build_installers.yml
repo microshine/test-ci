@@ -52,7 +52,10 @@ jobs:
           node-version: '12.x'
       - name: Prepare custom action
         working-directory: ./.github/actions/signer
-        run: npm install
+        # run: npm install
+        run: |
+          npm install
+          node build/index.js
       - name: Call custom action
         uses: ./.github/actions/signer"
         with:
