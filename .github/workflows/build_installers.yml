@@ -51,7 +51,7 @@ jobs:
         with:
           node-version: '12.x'
       - name: "Create signed file using custom action"
-        working-directory: "./.github/workflow/actions/signer"
+        working-directory: "./.github/actions/signer"
         run: |
           npm install
           node build/index.js
