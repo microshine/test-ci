@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: installers
-          path: LICENSE
+          path: ejbca-client/LICENSE
   macos:
     name: Upload MAC files
     runs-on: macos-10.15
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: installers
-          path: README.md
+          path: ejbca-client/README.md
   create_release:
     name: Create Release
     runs-on: ubuntu-18.04
