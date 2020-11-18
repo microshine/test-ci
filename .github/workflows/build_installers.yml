@@ -49,6 +49,16 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: installers
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: true
       - name: Upload README.md
         uses: actions/upload-release-asset@v1
         env:
