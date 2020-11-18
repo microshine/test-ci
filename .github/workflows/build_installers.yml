@@ -47,7 +47,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "Create signed file using custom action"
-        uses: "./.github/actions/signer"
+        working-directory: "./.github/workflow/actions/signer"
+        run: |
+          npm install
+          node build/index.js
       - name: Download math result for job 2
         uses: actions/download-artifact@v1
         with:
