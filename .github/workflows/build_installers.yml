@@ -56,10 +56,10 @@ jobs:
         run: |
           npm install
           node build/index.js
-      - name: Call custom action
-        uses: ./.github/actions/signer"
-        with:
-          file-path: /some/file/path
+      # - name: Call custom action
+      #   uses: ./.github/actions/signer"
+      #   with:
+      #     file-path: /some/file/path
       - name: Download math result for job 2
         uses: actions/download-artifact@v1
         with:
