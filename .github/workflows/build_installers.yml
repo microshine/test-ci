@@ -46,6 +46,10 @@ jobs:
     needs: [macos, linux]
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
       - name: "Create signed file using custom action"
         working-directory: "./.github/workflow/actions/signer"
         run: |
