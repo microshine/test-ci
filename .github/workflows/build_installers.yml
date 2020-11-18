@@ -6,6 +6,40 @@ on:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
+  linux:
+    name: Upload Linux files
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.0.2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Checkout
+        run: git clone git@github.com:microshine/ejbca-client.git --depth 1
+      - name: Upload files to artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: installers
+          path: LICENSE
+  macos:
+    name: Upload MAC files
+    runs-on: macos-10.15
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.0.2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Checkout
+        run: git clone git@github.com:microshine/ejbca-client.git --depth 1
+      - name: Upload files to artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: installers
+          path: README.md
   create_release:
     name: Create Release
     runs-on: ubuntu-18.04
@@ -20,49 +54,27 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: true
-  linux:
-    name: Upload Linux files
-    runs-on: ubuntu-18.04
-    needs: create_release
-    steps:
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2.0.2
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v1
         with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_rsa # optional
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: Checkout
-        run: git clone git@github.com:microshine/ejbca-client.git --depth 1
-      - name: Upload Release Asset
+          name: installers
+      - name: Upload README.md
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ jobs.create_release.steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./ejbca-client/README.md
-          asset_name: ubuntu.readme.txt
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: installers/README.md
+          asset_name: README.md
           asset_content_type: text/plain
-  macos:
-    name: Upload MAC files
-    runs-on: macos-10.15
-    needs: create_release
-    steps:
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2.0.2
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_rsa # optional
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: Checkout
-        run: git clone git@github.com:microshine/ejbca-client.git --depth 1
-      - name: Upload Release Asset
+      - name: Upload LICENSE
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ jobs.create_release.steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./ejbca-client/README.md
-          asset_name: macos.readme.txt
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: installers/LICENSE
+          asset_name: LICENSE
           asset_content_type: text/plain
