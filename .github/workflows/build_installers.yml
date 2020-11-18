@@ -45,6 +45,8 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [macos, linux]
     steps:
+      - name: "Create signed file using custom action"
+        uses: "./.github/actions/signer"
       - name: Download math result for job 2
         uses: actions/download-artifact@v1
         with:

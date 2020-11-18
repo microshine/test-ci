@@ -1,0 +1,11 @@
+{
+  "name": "signer",
+  "main": "build/index.js",
+  "scripts": {
+    "prepare": "tsc"
+  },
+  "devDependencies": {
+    "@actions/core": "^1.2.6",
+    "typescript": "^4.0.5"
+  }
+}
