@@ -50,13 +50,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: "Create signed file using custom action"
-        working-directory: "./.github/actions/signer"
-        run: |
-          npm install
-          node build/index.js
+      - name: Prepare custom action
+        working-directory: ./.github/actions/signer
+        run: npm install
+      - name: Call custom action
+        uses: ./.github/actions/signer"
         with:
-          file-path: /path/to/some/file
+          file-path: /some/file/path
       - name: Download math result for job 2
         uses: actions/download-artifact@v1
         with:
