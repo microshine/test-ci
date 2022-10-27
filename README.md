@@ -13,7 +13,7 @@ This report is generated using [Zlint](https://github.com/zmap/zlint) a tool com
 
 | Issuers | Certificates | Errors | Warnings | Notices | Not Effective |
 |---------|--------------|--------|----------|---------|---------------|
-| [Comcast](Comcast/#leaf-certificates) | 5 (13.89%) | 5 (100.00%) | 5 (100.00%) | 0 (0.00%) | 0 (0.00%) |
+| [Comcast](Comcast#leaf-certificates) | 5 (13.89%) | 5 (100.00%) | 5 (100.00%) | 0 (0.00%) | 0 (0.00%) |
 | [GBSDTech](GBSDTech/#leaf-certificates) | 1 (2.78%) | 1 (100.00%) | 1 (100.00%) | 0 (0.00%) | 0 (0.00%) |
 | [Metaswitch](Metaswitch/#leaf-certificates) | 3 (8.33%) | 0 (0.00%) | 0 (0.00%) | 0 (0.00%) | 3 (100.00%) |
 | [NetNumber](NetNumber/#leaf-certificates) | 4 (11.11%) | 4 (100.00%) | 1 (25.00%) | 4 (100.00%) | 0 (0.00%) |
