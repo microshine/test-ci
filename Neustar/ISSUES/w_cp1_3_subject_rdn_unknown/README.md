@@ -1,0 +1,29 @@
+# STIR/SHAKEN CA Ecosystem Compliance
+
+## Neustar
+Name: w_cp1_3_subject_rdn_unknown\
+Source: CPv1.3\
+Citation: ToKENs (SHAKEN) Certificate Policy\
+Effective Date: 10 Jan 22 00:00 UTC\
+Description: Names used in the STI certificates shall represent an unambiguous identifier for the SP Subject. However, the names should be meaningful meaningful enough to represent the SP to whom the certificate is being issued, in a manner similar to that used to identify SP’s equipment in the network.
+
+### Leaf Certificates
+
+| Status | Subject | Link | Details |
+|--------|---------|------|---------|
+| not effective | C=US, ST=FL, L=Tampa, O=Digital IP Voice, OU=Service Division, CN=digitalipvoice.com | [view](../../CERTIFICATES/8bc020a691adf8cddf209205d987e9e9d7cdf467/README.md) |  |
+| not effective | C=US, ST=NC, L=Raleigh, O=Bandwidth.com CLEC LLC, OU=Prod, CN=SHAKEN | [view](../../CERTIFICATES/49125b9c00a619caeb2345cf7be62aceabfd1b8c/README.md) |  |
+| not effective | C=US, ST=CA, L=San Francisco, O=LiveVox, OU=VOIP, CN=PRD | [view](../../CERTIFICATES/1627721ca177233c1506745d9192ebf730e11fc3/README.md) |  |
+| not effective | CN=prod SHAKEN 811J, O=Alianza, L=Pleasant Grove, ST=Utah, C=US | [view](../../CERTIFICATES/7b0476dd3fc8c512dfe9463bca3d630039030119/README.md) |  |
+| warn | CN=***SHAKEN***464D, OU=VOIP, O=Fibernetics, L=Cambridge, ST=ON, C=CA | [view](../../CERTIFICATES/b9fc91972f86a60e6b515cb176b9616851ffb0ab/README.md) | Only CN, C, O, and SERIALNUMBER can be included. Additional RNDs may introduce ambiguity and may not be verifiable |
+| warn | CN=ATT SHAKEN 4036, OU=AT&T Services\\, Inc., O=ATT SHAKEN E-E, L=Dallas, ST=Texas, C=US | [view](../../CERTIFICATES/baa252858dcd14844f2871eb9b93d60af3692943/README.md) | Only CN, C, O, and SERIALNUMBER can be included. Additional RNDs may introduce ambiguity and may not be verifiable |
+
+### CA Certificates
+
+| Status | Subject | Link | Details |
+|--------|---------|------|---------|
+
+no warning, or error, or not effective date level issues were found
+
+
+Generated: 27/10/2022 at 20:58:34
